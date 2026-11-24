@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KATAPEDIA – Belanja Praktis, Cepat, dan Terpercaya</title>
+<meta name="description" content="KATAPEDIA, toko online untuk elektronik, fashion, buku, dan aksesoris. Belanja praktis, cepat, dan terpercaya.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = { theme: { extend: {
+  fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
+  colors: { brand: { DEFAULT: '#059669', dark: '#047857' }, ink: '#0F172A', soft: '#F8FAFC' }
+} } };
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  #tabs::-webkit-scrollbar { display: none; }
+  @media print { body > *:not(#m-invoice) { display: none !important; } #m-invoice { position: static; } }
+</style>
+</head>
+<body class="font-sans bg-soft text-ink antialiased">
+
+<!-- NAVBAR -->
+<header class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-slate-100 shadow-sm">
+  <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap items-center gap-3 md:gap-6">
+    <a href="#" class="flex items-center gap-2 text-brand font-extrabold text-xl tracking-tight">
+      <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0"/></svg>
+      KATAPEDIA
+    </a>
+    <div class="order-last w-full md:order-none md:w-auto md:flex-1">
+      <div class="relative">
+        <svg class="w-5 h-5 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path stroke-linecap="round" d="m21 21-4.3-4.3"/></svg>
+        <input id="search" type="search" placeholder="Cari produk, misalnya headphone atau kaos..." class="w-full pl-10 pr-4 py-2.5 rounded-xl bg-soft border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-brand focus:border-brand transition">
+      </div>
+    </div>
+    <nav class="ml-auto md:ml-0 flex items-center gap-1">
+      <button data-act="open" data-v="wish" aria-label="Wishlist" class="relative p-2.5 rounded-xl hover:bg-soft text-slate-600 hover:text-brand transition">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21.2l7.8-7.7 1-1.1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+        <span id="b-wish" class="hidden absolute top-0.5 right-0.5 min-w-[18px] h-[18px] px-1 rounded-full bg-red-500 text-white text-[10px] font-bold flex items-center justify-center">0</span>
+      </button>
+      <button data-act="open" data-v="history" aria-label="Riwayat Pesanan" class="relative p-2.5 rounded-xl hover:bg-soft text-slate-600 hover:text-brand transition">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path stroke-linecap="round" stroke-linejoin="round" d="M12 7v5l3 2"/></svg>
+        <span id="b-hist" class="hidden absolute top-0.5 right-0.5 min-w-[18px] h-[18px] px-1 rounded-full bg-slate-700 text-white text-[10px] font-bold flex items-center justify-center">0</span>
+      </button>
+      <button data-act="open" data-v="cart" aria-label="Keranjang" class="relative p-2.5 rounded-xl hover:bg-soft text-slate-600 hover:text-brand transition">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path stroke-linecap="round" stroke-linejoin="round" d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>
+        <span id="b-cart" class="hidden absolute top-0.5 right-0.5 min-w-[18px] h-[18px] px-1 rounded-full bg-brand text-white text-[10px] font-bold flex items-center justify-center">0</span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="max-w-7xl mx-auto px-4 pt-6">
+    <div class="rounded-2xl bg-gradient-to-br from-brand to-emerald-800 text-white p-6 md:p-12 overflow-hidden relative">
+      <div class="absolute -right-16 -top-16 w-72 h-72 rounded-full bg-white/10"></div>
+      <div class="absolute right-24 -bottom-24 w-72 h-72 rounded-full bg-white/5"></div>
+      <div class="relative max-w-xl">
+        <span class="inline-block bg-white/15 text-xs font-semibold px-3 py-1 rounded-full">Promo Spesial Hari Ini</span>
+        <h1 class="mt-4 text-3xl md:text-5xl font-extrabold leading-tight">Belanja Praktis, Cepat, dan Terpercaya</h1>
+        <p class="mt-3 text-emerald-50 text-sm md:text-base">Ribuan produk pilihan dengan harga bersahabat. Gunakan kode voucher <span class="font-extrabold bg-white text-brand px-2 py-0.5 rounded-md">KATAPEDIA10</span> untuk diskon 10% di keranjang kamu.</p>
+        <a href="#katalog" class="inline-block mt-6 bg-white text-brand font-bold px-6 py-3 rounded-xl shadow-sm hover:bg-emerald-50 hover:-translate-y-0.5 transition">Belanja Sekarang</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- KATALOG -->
+  <section id="katalog" class="max-w-7xl mx-auto px-4 py-8 scroll-mt-24">
+    <div class="flex flex-col md:flex-row md:items-center gap-3 md:justify-between">
+      <div id="tabs" class="flex gap-2 overflow-x-auto pb-1"></div>
+      <div class="flex items-center gap-2 shrink-0">
+        <label for="sort" class="text-sm text-slate-500">Urutkan:</label>
+        <select id="sort" class="text-sm font-semibold bg-white border border-slate-200 rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand">
+          <option value="popular">Terpopuler</option>
+          <option value="low">Harga Terendah</option>
+          <option value="high">Harga Tertinggi</option>
+        </select>
+      </div>
+    </div>
+    <p id="count" class="text-sm text-slate-500 mt-4"></p>
+    <div id="grid" class="mt-3 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-5"></div>
+    <div id="empty" class="hidden text-center py-20 text-slate-400">
+      <p class="text-5xl">🔍</p>
+      <p class="mt-3 font-semibold text-slate-600">Produk tidak ditemukan</p>
+      <p class="text-sm">Coba kata kunci lain atau pilih kategori Semua.</p>
+    </div>
+  </section>
+</main>
+
+<!-- FOOTER -->
+<footer class="bg-white border-t border-slate-100 mt-8">
+  <div class="max-w-7xl mx-auto px-4 py-10 grid gap-8 md:grid-cols-4">
+    <div class="md:col-span-2">
+      <p class="text-brand font-extrabold text-xl">KATAPEDIA</p>
+      <p class="mt-2 text-sm text-slate-500 max-w-md">KATAPEDIA adalah toko online yang membantu kamu menemukan elektronik, fashion, buku, dan aksesoris dengan proses belanja yang praktis, cepat, dan terpercaya.</p>
+    </div>
+    <div>
+      <p class="font-bold text-sm">Layanan Pelanggan</p>
+      <ul class="mt-3 space-y-2 text-sm text-slate-500">
+        <li><a href="#" class="hover:text-brand">Pusat Bantuan</a></li>
+        <li><a href="#" class="hover:text-brand">Cara Berbelanja</a></li>
+        <li><a href="#" class="hover:text-brand">Pengembalian Barang</a></li>
+        <li><a href="#" class="hover:text-brand">Hubungi Kami</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="font-bold text-sm">Metode Pembayaran</p>
+      <div class="mt-3 flex flex-wrap gap-2 text-xs font-semibold">
+        <span class="px-2.5 py-1 rounded-lg border border-slate-200">QRIS</span>
+        <span class="px-2.5 py-1 rounded-lg border border-slate-200">BCA VA</span>
+        <span class="px-2.5 py-1 rounded-lg border border-slate-200">Mandiri VA</span>
+        <span class="px-2.5 py-1 rounded-lg border border-slate-200">BNI VA</span>
+        <span class="px-2.5 py-1 rounded-lg border border-slate-200">GoPay</span>
+        <span class="px-2.5 py-1 rounded-lg border border-slate-200">OVO</span>
+        <span class="px-2.5 py-1 rounded-lg border border-slate-200">DANA</span>
+      </div>
+    </div>
+  </div>
+  <div class="border-t border-slate-100 py-4 text-center text-xs text-slate-400">&copy; 2026 KATAPEDIA. Situs demo, seluruh transaksi hanya simulasi.</div>
+</footer>
+
+<!-- MODAL DETAIL PRODUK -->
+<div id="m-detail" class="modal hidden fixed inset-0 z-50 flex items-center justify-center p-4">
+  <div class="absolute inset-0 bg-slate-900/50" data-act="close" data-v="m-detail"></div>
+  <div class="relative bg-white rounded-2xl shadow-xl w-full max-w-3xl max-h-[92vh] overflow-y-auto">
+    <button data-act="close" data-v="m-detail" aria-label="Tutup" class="absolute top-3 right-3 z-10 w-9 h-9 rounded-full bg-white shadow text-slate-500 hover:text-ink">✕</button>
+    <div id="detail-body"></div>
+  </div>
+</div>
+
+<!-- MODAL WISHLIST -->
+<div id="m-wish" class="modal hidden fixed inset-0 z-50 flex items-center justify-center p-4">
+  <div class="absolute inset-0 bg-slate-900/50" data-act="close" data-v="m-wish"></div>
+  <div class="relative bg-white rounded-2xl shadow-xl w-full max-w-lg max-h-[85vh] flex flex-col">
+    <div class="flex items-center justify-between px-5 py-4 border-b border-slate-100">
+      <h2 class="font-extrabold text-lg">Wishlist Saya</h2>
+      <button data-act="close" data-v="m-wish" aria-label="Tutup" class="text-slate-400 hover:text-ink">✕</button>
+    </div>
+    <div id="wish-body" class="px-5 py-2 overflow-y-auto"></div>
+  </div>
+</div>
+
+<!-- MODAL RIWAYAT PESANAN -->
+<div id="m-history" class="modal hidden fixed inset-0 z-50 flex items-center justify-center p-4">
+  <div class="absolute inset-0 bg-slate-900/50" data-act="close" data-v="m-history"></div>
+  <div class="relative bg-white rounded-2xl shadow-xl w-full max-w-lg max-h-[85vh] flex flex-col">
+    <div class="flex items-center justify-between px-5 py-4 border-b border-slate-100">
+      <h2 class="font-extrabold text-lg">Riwayat Pesanan</h2>
+      <button data-act="close" data-v="m-history" aria-label="Tutup" class="text-slate-400 hover:text-ink">✕</button>
+    </div>
+    <div id="hist-body" class="px-5 py-4 overflow-y-auto"></div>
+  </div>
+</div>
+
+<!-- MODAL CHECKOUT -->
+<div id="m-checkout" class="modal hidden fixed inset-0 z-50 flex items-center justify-center p-4">
+  <div class="absolute inset-0 bg-slate-900/50" data-act="close" data-v="m-checkout"></div>
+  <div class="relative bg-white rounded-2xl shadow-xl w-full max-w-2xl max-h-[92vh] overflow-y-auto">
+    <div class="flex items-center justify-between px-5 py-4 border-b border-slate-100 sticky top-0 bg-white rounded-t-2xl">
+      <h2 class="font-extrabold text-lg">Checkout</h2>
+      <button data-act="close" data-v="m-checkout" aria-label="Tutup" class="text-slate-400 hover:text-ink">✕</button>
+    </div>
+    <form id="co-form" class="p-5 grid gap-4">
+      <div>
+        <label for="co-name" class="text-sm font-semibold">Nama Lengkap</label>
+        <input id="co-name" required minlength="3" autocomplete="name" class="mt-1 w-full px-3 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-brand" placeholder="Nama penerima">
+      </div>
+      <div>
+        <label for="co-wa" class="text-sm font-semibold">Nomor WhatsApp</label>
+        <input id="co-wa" required type="tel" pattern="^(\+62|62|0)8[0-9]{8,12}$" title="Contoh: 081234567890" autocomplete="tel" class="mt-1 w-full px-3 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-brand" placeholder="081234567890">
+      </div>
+      <div>
+        <label for="co-addr" class="text-sm font-semibold">Alamat Lengkap</label>
+        <textarea id="co-addr" required minlength="10" rows="3" class="mt-1 w-full px-3 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-brand" placeholder="Jalan, nomor rumah, RT/RW, kelurahan, kecamatan, kota, kode pos"></textarea>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div>
+          <label for="co-courier" class="text-sm font-semibold">Ekspedisi</label>
+          <select id="co-courier" class="mt-1 w-full px-3 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-brand">
+            <option value="jne">JNE Reguler (Rp15.000)</option>
+            <option value="jnt">J&amp;T Express (Rp17.000)</option>
+            <option value="sicepat">SiCepat (Rp14.000)</option>
+          </select>
+        </div>
+        <div>
+          <label for="co-pay" class="text-sm font-semibold">Metode Pembayaran</label>
+          <select id="co-pay" class="mt-1 w-full px-3 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-brand">
+            <option value="qris">QRIS</option>
+            <option value="va">Virtual Account Bank</option>
+            <option value="ewallet">E-Wallet (GoPay/OVO/DANA)</option>
+          </select>
+        </div>
+      </div>
+      <div class="bg-soft rounded-xl p-4 space-y-1"><div id="co-sum"></div></div>
+      <button type="submit" class="h-12 rounded-xl bg-brand hover:bg-brand-dark text-white font-bold transition">Buat Pesanan</button>
+    </form>
+  </div>
+</div>
+
+<!-- MODAL INVOICE -->
+<div id="m-invoice" class="modal hidden fixed inset-0 z-50 flex items-center justify-center p-4">
+  <div class="absolute inset-0 bg-slate-900/50" data-act="close" data-v="m-invoice"></div>
+  <div class="relative bg-white rounded-2xl shadow-xl w-full max-w-md max-h-[92vh] overflow-y-auto">
+    <div id="inv-body"></div>
+    <div class="px-6 pb-6 flex gap-2 print:hidden">
+      <button data-act="print" class="flex-1 h-11 rounded-xl border border-slate-200 font-semibold text-sm hover:bg-soft">Cetak Struk</button>
+      <button data-act="close" data-v="m-invoice" class="flex-1 h-11 rounded-xl bg-brand hover:bg-brand-dark text-white font-semibold text-sm">Tutup</button>
+    </div>
+  </div>
+</div>
+
+<!-- CART DRAWER -->
+<div id="drawer-ov" class="hidden fixed inset-0 z-50 bg-slate-900/50" data-act="close" data-v="drawer"></div>
+<aside id="drawer" class="fixed top-0 right-0 z-50 h-full w-full max-w-md bg-white shadow-2xl flex flex-col translate-x-full transition-transform duration-300">
+  <div class="flex items-center justify-between px-5 py-4 border-b border-slate-100">
+    <h2 class="font-extrabold text-lg">Keranjang Belanja</h2>
+    <button data-act="close" data-v="drawer" aria-label="Tutup" class="text-slate-400 hover:text-ink">✕</button>
+  </div>
+  <div id="cart-items" class="flex-1 overflow-y-auto px-5"></div>
+  <div class="border-t border-slate-100 p-5 space-y-3">
+    <div class="flex gap-2">
+      <input id="promo-in" placeholder="Kode promo (KATAPEDIA10)" class="flex-1 px-3 py-2.5 rounded-xl border border-slate-200 text-sm uppercase focus:outline-none focus:ring-2 focus:ring-brand">
+      <button data-act="promo" class="px-4 rounded-xl bg-ink text-white text-sm font-semibold hover:bg-slate-700 transition">Pakai</button>
+    </div>
+    <p id="promo-msg" class="text-xs font-semibold text-brand -mt-1"></p>
+    <div id="sum" class="space-y-1"></div>
+    <button id="btn-checkout" data-act="checkout" class="w-full h-12 rounded-xl bg-brand hover:bg-brand-dark text-white font-bold transition disabled:opacity-40 disabled:cursor-not-allowed">Checkout</button>
+  </div>
+</aside>
+
+<!-- TOAST -->
+<div id="toasts" class="fixed bottom-5 left-1/2 -translate-x-1/2 z-[60] flex flex-col items-center gap-2 pointer-events-none"></div>
+
+<script src="products.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
